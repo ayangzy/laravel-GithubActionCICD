@@ -24,10 +24,12 @@ RUN composer install --no-interaction --no-scripts --no-progress --prefer-dist -
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-EXPOSE 9000
 
+RUN php artisan serve --host=0.0.0.0 --port=9000
+
+EXPOSE 9000
 
 #CMD bash -C './run.sh';'bash'
 
-CMD /bin/sh -C "./run.sh"; /usr/bin/supervisord -n -c /var/www/html/supervisord.conf
+#CMD /bin/sh -C "./run.sh"; /usr/bin/supervisord -n -c /var/www/html/supervisord.conf
 
